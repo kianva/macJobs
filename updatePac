@@ -1,0 +1,12 @@
+#!/bin/bash
+# 修改pac文件的内容时，经常为了去缓存要改pac的参数，这个脚本可以使这个操作程序化 by Kianva 2017.03.07
+t=`date +%s`
+yourname='john'
+pac_file_name='proxy.pac'
+sudo networksetup -setautoproxyurl Wi-Fi file:///Users/${yourname}/Sites/www.test.com/${pac_file_name}?${t}
+if [ $? == 0 ];then
+        echo 'update auto-proxy-file success!'
+else
+        echo 'error occurs when update auto-proxy-file'
+fi
+unset t
