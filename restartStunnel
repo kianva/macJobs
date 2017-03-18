@@ -5,6 +5,8 @@
 stunnelPid=$(ps aux|grep stunnel|grep -v grep|awk '{print $2}')
 if [ -z "$stunnelPid" ]; then
         echo 'stunnel is not running'
+        unset stunnelPid
+        exit
 else
         sudo kill -9 ${stunnelPid} > /dev/null 2>&1
         if [ $? == 0 ]; then
